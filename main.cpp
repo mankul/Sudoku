@@ -3,9 +3,9 @@ namespace game{}
 using namespace std;
 using namespace game;
 
-#ifndef SOLVER_H
-    #include "solver.h"
-#endif 
+// #ifndef SOLVER_H
+//     #include "solver.h"
+// #endif 
 #ifndef CONFIG_H
     #include "config.h"
 #endif
@@ -15,7 +15,8 @@ using namespace game;
 #ifndef GRID_H
     #include "grid.h"
 #endif
-
+bool solveRow(game::Matrix * , game::GRID , int , int);
+bool solverHardCodedCell(game::Matrix * , game::GRID , int , int , int);
 void inputGRID(int * matrix[GRIDSIZE]){
     cout<<"input grid"<<endl;
 }

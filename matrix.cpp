@@ -2,21 +2,21 @@
 #include<iostream>
 using namespace game;
 
-bool game::Matrix::getOptRowFiller(GRID grid,int columnIndex, int filler){
-    for (int i = 0; i < GRIDSIZE; i++ ){
+bool Matrix::getOptRowFiller(GRID grid,int columnIndex, int filler){
+    for (int i = 0; i < GRIDSIZE; i++ )
         if(grid.getState(i, columnIndex) == filler)
             return false;
     return true;
 }
 
-bool game::Matrix::getOptColFiller(GRID grid, int rowIndex, int filler){
+bool Matrix::getOptColFiller(GRID grid, int rowIndex, int filler){
     for(int i = 0; i < GRIDSIZE;i++)
         if(grid.getState(rowIndex,i)== filler)
             return false;
     return true;
 }
 
-bool game::Matrix::getOptGridFiller(GRID grid, int rowIndex, int columnIndex, int filler){
+bool Matrix::getOptGridFiller(GRID grid, int rowIndex, int columnIndex, int filler){
     if( rowIndex%3 == 0 ){
         if( columnIndex %3 == 0)
             return searchInGrid(grid, rowIndex, columnIndex, filler);
@@ -45,7 +45,7 @@ bool game::Matrix::getOptGridFiller(GRID grid, int rowIndex, int columnIndex, in
     return true;
 }
 
-bool game::Matrix::searchInGrid(GRID grid, int row, int column, int filler){
+bool Matrix::searchInGrid(GRID grid, int row, int column, int filler){
     for(int i = row; i < row+3; i++)
         for(int j = column; j < column + 3; j++)
             if(grid.getState(i,j) == filler)
@@ -54,7 +54,7 @@ bool game::Matrix::searchInGrid(GRID grid, int row, int column, int filler){
     
 }
 
-void game::Matrix::inputGRID(){
+void Matrix::inputGRID(GRID grid){
     int numberInput;
     for(int i = 0; i < GRIDSIZE; i++)
         for(int j = 0 ; j < GRIDSIZE; j++){
@@ -62,11 +62,11 @@ void game::Matrix::inputGRID(){
             grid.setState(i, j, numberInput);
         }
 }
-int game::Matrix::getFiller(GRID grid, int rowIndex, int columnIndex, int state){
-    
-    for(int i = state+1; i <= GRIDSIZE; i++){
+int Matrix::getFiller(GRID grid, int rowIndex, int columnIndex, int state){
+    int i;
+    for(i = state+1; i <= GRIDSIZE; i++){
         bool rowFiller = getOptRowFiller(grid, columnIndex, i);
-        bool colFiller = getOptColumnFiller(grid, rowIndex,  i);
+        bool colFiller = getOptColFiller(grid, rowIndex,  i);
         bool gridFiller = getOptGridFiller(grid,rowIndex, columnIndex, i);
         if( rowFiller && colFiller &&  gridFiller)
             break;

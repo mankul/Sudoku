@@ -11,6 +11,7 @@ namespace game{
 
 
         public:
+        GRID();
         int getState(int , int );
         void setState(int , int , int );
         void ipToGrid(int * [GRIDSIZE]);

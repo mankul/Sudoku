@@ -13,7 +13,7 @@ namespace game{
             bool getOptGridFiller(GRID, int, int, int);
             bool searchInGrid(GRID, int, int, int);
         public:
-            void inputGRID();
+            void inputGRID(GRID grid);
             int getFiller(GRID, int , int, int );
 
 

@@ -1,6 +1,6 @@
 
-
-cc:=GCC
+all:= $(TARGET)
+cc:=g++
 CFLAGS:= -g -Wall
 TARGET:= sudoku
 MAIN:= main
@@ -8,19 +8,21 @@ GRID:= grid
 MATRIX:= matrix
 
 $(TARGET): $(MAIN).o $(MATRIX).o $(GRID).o
-	$(cc) $(CFLAGS) -o $(TARGET) $(MAIN).o $(MATRIX).o $(GRID).o
-$(MAIN).o: $(MAIN).cpp matrix.h grid.h config.h solver.h
-	$(cc) $(CFLAGS) -o $(MAIN).o $(MAIN).cpp
+	$(cc)  -o $(TARGET) $(MAIN).o $(MATRIX).o $(GRID).o
+
+$(MAIN).o: $(MAIN).cpp matrix.h grid.h config.h 
+	$(cc)  -c $(MAIN).cpp
 
 
-$(MATRIX).o: $(MATRIX).cpp $(GRID).h config.h
-	$(cc) $(CFLAGS) -o $(MATRIX).o -c $(MATRIX).cpp 
+$(MATRIX).o: $(MATRIX).cpp $(GRID).o config.h
+	$(cc)  -c $(MATRIX).cpp
 
 $(GRID).o: $(GRID).cpp $(GRID).h config.h
-	$(cc) $(CFLAGS) -c $(GRID).cpp
+	$(cc)  -c $(GRID).cpp
 
 
 clean: 
+	rm *.o 
 	rm $(TARGET)
 
 

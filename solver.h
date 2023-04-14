@@ -1,9 +1,10 @@
-#ifndef GRID_H
-    #include"grid.h"
-#endif
-#ifndef MATRIX_H
-    #include "matrix.h"
-#endif
 #define SOLVER_H
-bool solveRow(game::Matrix *, game::GRID, int, int);
-bool solverHardCodedCell(game::Matrix *, game::GRID, int, int, int);
+#include "matrix.h"
+#include "grid.h"
+using namespace game;
+// namespace game{
+    // class Matrix{};
+    // class GRID{};
+    bool solveRow(Matrix *, game::GRID, int, int);
+    bool solverHardCodedCell(Matrix *, game::GRID, int, int, int);
+// }

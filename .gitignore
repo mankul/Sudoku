@@ -1,4 +1,6 @@
+sudoku
 *.o
 *.out
 *.bin
 *.exe
+*.gch
