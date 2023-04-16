@@ -4,3 +4,4 @@ sudoku
 *.bin
 *.exe
 *.gch
+*/*.json

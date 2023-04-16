@@ -2,7 +2,9 @@
 namespace game{}
 using namespace std;
 using namespace game;
-
+#ifndef LOADFILE_H
+    #include "loadFile.h"
+#endif
 // #ifndef SOLVER_H
 //     #include "solver.h"
 // #endif 
@@ -67,6 +69,15 @@ bool solveRow(game::Matrix * m, game::GRID grid, int rowIndex, int columnIndex){
 }
 
 
+void displayGrid(game::GRID grid){
+    for(int i = 0 ; i < GRIDSIZE; i++){
+        for(int j = 0; j < GRIDSIZE; j++){
+            cout<<grid.getState(i,j)<<"\t";
+        }
+        cout<<endl;
+    }
+}
+
 
 
 int main(){
@@ -77,12 +88,14 @@ int main(){
     int initialRow = 0;
     int initialColumn = 0;
 
-    cout<<"enter sudoku puzzle, row wise , number seperated by space"<<endl;
-    for(int i = 0 ; i < GRIDSIZE; i++){
-        for(int j = 0; j < GRIDSIZE; j++){
-            cin>>matrix[i][j];
-        }
-    }
+    const char * fileName = "sudokuExample.txt";
+    readFromFile(fileName);
+    // cout<<"enter sudoku puzzle, row wise , number seperated by space"<<endl;
+    
 
+    game::Matrix * m;
+    game::GRID grid;
+    grid.inputToGrid(matrix);
+    solveRow(m,grid, 0 , 0);
     return 0;
 }
